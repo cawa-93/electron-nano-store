@@ -60,6 +60,28 @@ const {get, set} = await storePromise;
 get('role') // 'admin' | 'user'
 set('name', 123) // Type error: Argument of type number is not assignable to parameter of type string
 ```
+
+### Listen store changes
+fs-nano-store automatically tracks all changes to the store, and emit a `changed` event if the store has been changed out of context.
+
+Since the electron does not allow you to expose `EventTarget` to the main world, you can proxy events to an existing target yourself
+```ts
+// in Preload Script
+const storePromise = defineStore<Store>('user');
+storePromise.then(({ changes }) => {
+  changes.addListener(
+    'changed',
+    () => globalThis.dispatchEvent( new CustomEvent('user:changed') ),
+  );
+});
+```
+```ts
+// in Renderer
+globalThis.addEventListener(
+  'user:changed',
+  () => { /* ... */ }
+)
+```
 ## Data location
 By default, all data saving in user data dir - This is usually the path returned by `electron.app.getPath('userData')`. You can change this by setting custom path:
 
