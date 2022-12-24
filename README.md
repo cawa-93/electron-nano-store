@@ -17,7 +17,7 @@ import {contextBridge} from 'electron'
 /**
  * Declare types for you storage
  */
-interface UserStore {
+type UserStore = {
     name: string,
     role: 'admin' | 'user'
 }
