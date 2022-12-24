@@ -29,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/cawa-93/electron-nano-store/issues"
   },
+  "funding": "https://www.buymeacoffee.com/kozack/",
   "exports": {
     ".": {
       "import": "./dist/index.js",
