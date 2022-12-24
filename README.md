@@ -73,8 +73,7 @@ store.set('role', 'wrong-role') // TS Error: Argument of type '"wrong-role"' is 
 
 ### Recommended with automatic type inference
 
-The exchange of types between the preload and the renderer can be a little annoying and complicated. So you can use
-a [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for automatic type inference
+The exchange of types between the preload and the renderer can be a little annoying and complicated. So you can use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for automatic type inference
 
 ```ts
 // in Preload Script
@@ -99,7 +98,7 @@ const store = await userStorePromise
 out of context.
 
 However, electron does not allow you to expose `EventEmitter` to the main world. This means that even though it defines
-and returns a change property, you can't add listeners directly.
+and returns `change` property, you can't add listeners directly.
 
 ```ts
 const {changes} = defineStore('store-name')
@@ -107,7 +106,7 @@ changes.addListener // undefined
 ```
 
 To do this, you **must** define store in the preload context, add listeners there, and proxy all events to an
-existing `EventTarget`, such as a window
+existing `EventTarget`, such as a `window`
 
 ```ts
 // in Preload Script
@@ -133,7 +132,7 @@ globalThis.addEventListener(
 
 1. You can't somehow change where are storage files placed in filesystems.
    It always in `electron.app.getPath('userData')` directory defined by electron.
-   Since the define function may be exposed for a non-secure context, this is done to prevent malicious code from making
+   Since the `defineStore` function may be exposed to a non-secure context, this is done to prevent malicious code from making
    uncontrolled writes anywhere on the file system.
     ```ts
     // 🚫 Harmful use
