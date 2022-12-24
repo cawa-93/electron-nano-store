@@ -14,9 +14,10 @@
   "keywords": [
     "electron",
     "persistent",
-    "filesystem",
     "storage",
-    "store"
+    "store",
+    "type-safe",
+    "secure"
   ],
   "author": {
     "email": "kozackunisoft@gmail.com",
