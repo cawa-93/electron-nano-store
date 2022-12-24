@@ -8,9 +8,14 @@ interface DefineStoreOptions {
 function resolveUserAppDataPath() {
     const arg = process.argv.find(arg => arg.startsWith('--user-data-dir='))
     if (!arg) {
-        throw new Error('Unable to find --user-data-dir in process.argv')
+        throw new Error('Unable to find --user-data-dir with valid path in process.argv')
     }
-    const dir = arg.split('=')[1]
+    const dir = arg.split('=')[1]?.trim()
+
+    if (!dir) {
+        throw new Error('Unable to find --user-data-dir with valid path in process.argv')
+    }
+
     return path.resolve(dir)
 }
 
