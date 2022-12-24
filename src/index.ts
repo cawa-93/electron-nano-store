@@ -1,6 +1,8 @@
-import * as path from "path";
-import {defineStore as defineNanoStore, TNanoStoreData} from 'fs-nano-store'
-export type {TNanoStoreData, TNanoStore} from 'fs-nano-store'
+import {normalize, resolve} from "node:path";
+import {defineStore as defineNanoStore, type TNanoStore, type TNanoStoreData} from 'fs-nano-store'
+
+export type {TNanoStoreData, TNanoStore}
+
 interface DefineStoreOptions {
     userDataPath?: string
 }
@@ -16,11 +18,11 @@ function resolveUserAppDataPath() {
         throw new Error('Unable to find --user-data-dir with valid path in process.argv')
     }
 
-    return path.resolve(dir)
+    return normalize(dir)
 }
 
 
 export function defineStore<TStore extends TNanoStoreData>(storeName: string, options: DefineStoreOptions = {}) {
-    const storeFile = path.resolve(options.userDataPath || resolveUserAppDataPath(), `${storeName}.json`)
+    const storeFile = resolve(options.userDataPath || resolveUserAppDataPath(), `${storeName}.json`)
     return defineNanoStore<TStore>(storeFile)
 }
