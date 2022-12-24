@@ -4,7 +4,6 @@
   "description": "A minimalistic, secure, type-safe data store for Electron",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --splitting --clean",
@@ -49,6 +48,6 @@
     "typescript": "4.9.4"
   },
   "dependencies": {
-    "fs-nano-store": "0.2.2"
+    "fs-nano-store": "0.2.3"
   }
 }
