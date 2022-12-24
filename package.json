@@ -1,7 +1,7 @@
 {
   "name": "electron-nano-store",
   "version": "0.1.3",
-  "description": "A simple, super minimalistic, type-safe data store for Electron",
+  "description": "A minimalistic, secure, type-safe data store for Electron",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
