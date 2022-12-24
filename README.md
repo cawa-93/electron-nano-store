@@ -3,7 +3,7 @@
 ---
 
 # Nano Electron store
-<a href="https://www.buymeacoffee.com/kozack" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;" ></a>
+<a href="https://www.buymeacoffee.com/kozack" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;max-height: 60px !important;" ></a>
 
 A simple, super minimalistic data store on a file system with TypeScript support. This package is flat wrapper around [fs-nano-store](https://github.com/cawa-93/fs-nano-store) and automatically resolves the path to the user data directory.
 
@@ -40,7 +40,7 @@ get('role') // 'admin' | 'user'
 set('name', 123) // Type error: Argument of type number is not assignable to parameter of type string
 ```
 
-### Auto-inferring types
+### Auto-inferred types
 You can use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) to automatically pass information about types between the preload and the renderer:
 ```ts
 // In Electron Preload Script
