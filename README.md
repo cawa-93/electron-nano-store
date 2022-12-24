@@ -40,6 +40,26 @@ get('role') // 'admin' | 'user'
 set('name', 123) // Type error: Argument of type number is not assignable to parameter of type string
 ```
 
+### Auto-inferring types
+You can use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) to automatically pass information about types between the preload and the renderer:
+```ts
+// In Electron Preload Script
+import {defineStore} from 'electron-nano-store';
+
+type UserStore = {
+  role: 'admin' | 'user'
+}
+
+export const storePromise = defineStore<UserStore>('userStore');
+```
+```ts
+// Somewhere in the renderer context of your application
+import { storePromise } from '#preload';
+
+const {get, set} = await storePromise;
+get('role') // 'admin' | 'user'
+set('name', 123) // Type error: Argument of type number is not assignable to parameter of type string
+```
 ## Data location
 By default, all data saving in user data dir - This is usually the path returned by `electron.app.getPath('userData')`. You can change this by setting custom path:
 
