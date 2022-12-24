@@ -26,7 +26,7 @@ function resolveUserAppDataPath() {
  */
 export function defineStore<TStore extends TNanoStoreData>(storeName: string) {
   if (basename(storeName) !== storeName) {
-    throw new Error(`${JSON.stringify(storeName)} in invalid store name. Store name should not containe any path fragments`);
+    throw new Error(`${JSON.stringify(storeName)} in invalid store name. Store name should not contain any path fragments`);
   }
 
   const storeFile = resolve(resolveUserAppDataPath(), `${storeName}.json`);
