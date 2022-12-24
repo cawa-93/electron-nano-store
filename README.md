@@ -41,11 +41,9 @@ set('name', 123) // Type error: Argument of type number is not assignable to par
 ```
 
 ## Data location
-By default all data saving in user data dir - This is usually the path returned by `electron.app.getPath('userData')`. You can change this by setting custom path:
+By default, all data saving in user data dir - This is usually the path returned by `electron.app.getPath('userData')`. You can change this by setting custom path:
 
 ```ts
-import {defineStore} from "./index";
-
 defineStore('store-name', {
     userDataPath: '/path/to/custom/dir/'
 })
