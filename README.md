@@ -3,7 +3,7 @@
 ---
 
 # Nano Electron store
-<a href="https://www.buymeacoffee.com/kozack" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;max-height: 60px !important;" ></a>
+<a href="https://www.buymeacoffee.com/kozack" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" height="60" alt="Buy Me A Coffee"></a>
 
 A simple, super minimalistic data store on a file system with TypeScript support. This package is flat wrapper around [fs-nano-store](https://github.com/cawa-93/fs-nano-store) and automatically resolves the path to the user data directory.
 
