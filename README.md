@@ -73,7 +73,8 @@ store.set('role', 'wrong-role') // TS Error: Argument of type '"wrong-role"' is 
 
 ### Recommended with automatic type inference
 
-The exchange of types between the preload and the renderer can be a little annoying and complicated. So you can use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for automatic type inference
+The exchange of types between the preload and the renderer can be a little annoying and complicated. So you can
+use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for automatic type inference
 
 ```ts
 // in Preload Script
@@ -93,7 +94,10 @@ const store = await userStorePromise
 ```
 
 ### In Main
-This package was intentionally designed with many restrictions for use in preload. If you want to use it in main, or you need more control you should use [fs-nano-store] directly
+
+This package was intentionally designed with many restrictions for use in preload. If you want to use it in main, or you
+need more control you should use [fs-nano-store] directly
+
 ```ts
 // In Main
 import { defineStore } from 'fs-nano-store'
@@ -148,14 +152,16 @@ globalThis.addEventListener(
 
 1. You can't somehow change where are storage files placed in filesystems.
    It always in `electron.app.getPath('userData')` directory defined by electron.
-   Since the `defineStore` function may be exposed to a non-secure context, this is done to prevent malicious code from making
+   Since the `defineStore` function may be exposed to a non-secure context, this is done to prevent malicious code from
+   making
    uncontrolled writes anywhere on the file system.
     ```ts
     // 🚫 Harmful use
     defineStore('.privat-config', { customPath: '/somewhere/in/user/filesystem/' })
     ```
    > **Note**
-   > If you need create store in some different location, you should make your own wrapper around [fs-nano-store]. Look how use [In Main](#in-main).
+   > If you need create store in some different location, you should make your own wrapper around [fs-nano-store]. Look
+   how use [In Main](#in-main).
 2. For the same reasons, you cannot use any path fragments in the repository name
     ```ts
     // 🚫 Harmful use
