@@ -10,7 +10,7 @@
     "dev": "tsup src/index.ts --format cjs,esm --dts --splitting --clean --watch",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "bumpp && npm publish --public"
+    "release": "npx standard-version --sign && npm publish --public"
   },
   "keywords": [
     "electron",
@@ -43,7 +43,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "18.11.17",
-    "bumpp": "8.2.1",
     "tsup": "6.5.0",
     "typescript": "4.9.4"
   },
