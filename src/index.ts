@@ -3,6 +3,10 @@ import {defineStore as defineNanoStore, type TNanoStore, type TNanoStoreData} fr
 
 export type {TNanoStoreData, TNanoStore};
 
+/**
+ * @private
+ * @return value of `--user-data-dir` command line argument
+ */
 function resolveUserAppDataPath() {
   const arg = process.argv.find(arg => arg.startsWith('--user-data-dir='));
   if (!arg) {
@@ -18,6 +22,16 @@ function resolveUserAppDataPath() {
 }
 
 /**
+ * Resolve full path to store file by store name
+ * @param storeName
+ * @param dir custom store dir. By default in `electron.app.getPath('userData')`
+ * @return Absolute path to file
+ */
+export function resolveStoreFilepath(storeName: string, dir: string = resolveUserAppDataPath()) {
+  return resolve(dir, `${storeName}.nano-store.json`)
+}
+
+/**
  * Create persistent storage. All data saved in filesystem in `electron.app.getPath('userData')` location.
  * For security reasons you can't change location in fs. Use directly `fs-nano-storage` for that.
  *
@@ -29,7 +43,10 @@ export function defineStore<TStore extends TNanoStoreData>(storeName: string) {
     throw new Error(`${JSON.stringify(storeName)} in invalid store name. Store name should not contain any path fragments`);
   }
 
-  const storeFile = resolve(resolveUserAppDataPath(), `${storeName}.json`);
-
-  return defineNanoStore<TStore>(storeFile);
+  return defineNanoStore<TStore>(
+    resolveStoreFilepath(
+      storeName,
+      resolveUserAppDataPath()
+    )
+  );
 }
