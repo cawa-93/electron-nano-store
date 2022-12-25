@@ -40,7 +40,7 @@ The examples below also show an example of use with TypeScript.
 ```ts
 // contracts.ts
 export type UserStore = {
-  role: 'admin' | 'user'
+	role: 'admin' | 'user'
 }
 ```
 
@@ -60,9 +60,9 @@ import type {UserStore} from 'contracts.ts'
 import type {defineStore} from 'electron-nano-store'
 
 declare global {
-  interface Window {
-    userStorePromise: ReturnType<typeof defineStore<UserStore>>
-  }
+	interface Window {
+		userStorePromise: ReturnType<typeof defineStore<UserStore>>
+	}
 }
 const store = await window.userStorePromise
 store.set('role', 'admin')
@@ -81,7 +81,7 @@ use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for 
 import {defineStore} from "electron-nano-store"
 
 type UserStore = {
-  role: 'admin' | 'user'
+	role: 'admin' | 'user'
 }
 export const userStorePromise = defineStore<UserStore>('user')
 ```
@@ -100,15 +100,15 @@ need more control you should use [fs-nano-store] directly
 
 ```ts
 // In Main
-import { defineStore } from 'fs-nano-store'
-import { resolveStoreFilepath } from 'electron-nano-store'
-import { app } from 'electron'
+import {defineStore} from 'fs-nano-store'
+import {resolveStoreFilepath} from 'electron-nano-store'
+import {app} from 'electron'
 
-const store = await defineStore( 
-  resolveStoreFilepath(
-    'store-name',
-    app.getPath('userData')
-  )
+const store = await defineStore(
+	resolveStoreFilepath(
+		'store-name',
+		app.getPath('userData')
+	)
 )
 ```
 
@@ -132,19 +132,19 @@ existing `EventTarget`, such as a `window`
 // in Preload Script
 const storePromise = defineStore<Store>('user')
 storePromise.then(({changes}) => {
-  changes.addListener(
-    'changed',
-    () => globalThis.dispatchEvent(new CustomEvent('user:changed')),
-  )
+	changes.addListener(
+		'changed',
+		() => globalThis.dispatchEvent(new CustomEvent('user:changed')),
+	)
 })
 ```
 
 ```ts
 // in Renderer
 globalThis.addEventListener(
-  'user:changed',
-  () => { /* ... */
-  }
+	'user:changed',
+	() => { /* ... */
+	}
 )
 ```
 
