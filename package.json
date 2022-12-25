@@ -48,5 +48,8 @@
   },
   "dependencies": {
     "fs-nano-store": "0.2.3"
+  },
+  "peerDependencies": {
+    "electron": "^22.0.0"
   }
 }
