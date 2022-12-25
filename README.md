@@ -92,7 +92,23 @@ import {userStorePromise} from '#preload'
 const store = await userStorePromise
 ```
 
-### Listen store changes
+### In Main
+This package was intentionally designed with many restrictions for use in preload. If you want to use it in main, or you need more control you should use [fs-nano-store] directly
+```ts
+// In Main
+import { defineStore } from 'fs-nano-store'
+import { resolveStoreFilepath } from 'electron-nano-store'
+import { app } from 'electron'
+
+const store = await defineStore( 
+  resolveStoreFilepath(
+    'store-name',
+    app.getPath('userData')
+  )
+)
+```
+
+### Listen store changes in Renderer
 
 [fs-nano-store] automatically tracks all changes to the store, and emit a `changed` event if the store has been changed
 out of context.
@@ -138,6 +154,8 @@ globalThis.addEventListener(
     // 🚫 Harmful use
     defineStore('.privat-config', { customPath: '/somewhere/in/user/filesystem/' })
     ```
+   > **Note**
+   > If you need create store in some different location, you should make your own wrapper around [fs-nano-store]. Look how use [In Main](#in-main).
 2. For the same reasons, you cannot use any path fragments in the repository name
     ```ts
     // 🚫 Harmful use
