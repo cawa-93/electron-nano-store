@@ -5,6 +5,7 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"sideEffects": false,
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts --splitting --clean",
 		"dev": "tsup src/index.ts --format cjs,esm --dts --splitting --clean --watch",
