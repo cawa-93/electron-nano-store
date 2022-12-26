@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.3.1](https://github.com/cawa-93/electron-nano-store/compare/v0.3.0...v0.3.1) (2022-12-26)
+
+
+### Features
+
+* mark package as `sideEffects: false` ([db338c3](https://github.com/cawa-93/electron-nano-store/commit/db338c3b802eb384cb0f8ccd5bd9b6864c0f4124))
+
 ## 0.3.0 (2022-12-25)
 
 * chore: release v0.3.0 ([682c535](https://github.com/cawa-93/electron-nano-store/commit/682c535))
@@ -66,6 +77,3 @@
 * Initial commit ([4ee6224](https://github.com/cawa-93/electron-nano-store/commit/4ee6224))
 * docs: fix readme typo ([4dddf42](https://github.com/cawa-93/electron-nano-store/commit/4dddf42))
 * chore: add .gitignore ([1c55fce](https://github.com/cawa-93/electron-nano-store/commit/1c55fce))
-
-
-
