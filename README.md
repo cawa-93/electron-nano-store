@@ -38,8 +38,8 @@ Just expose in main world `defineStore` function and use it directly in your ren
 
 ```ts
 // In Electron Preload Script
-import {defineStore} from "electron-nano-store"
-import {contextBridge} from 'electron'
+import { defineStore } from "electron-nano-store"
+import { contextBridge } from 'electron'
 
 contextBridge.exposeInMainWorld('defineStore', defineStore)
 ```
@@ -67,9 +67,9 @@ export type UserStore = {
 
 ```ts
 // in Preload Script
-import {defineStore} from "electron-nano-store"
-import {contextBridge} from 'electron'
-import type {UserStore} from 'contracts.ts'
+import { defineStore } from "electron-nano-store"
+import { contextBridge } from 'electron'
+import type { UserStore } from 'contracts.ts'
 
 const userStorePromise = defineStore<UserStore>('user')
 contextBridge.exposeInMainWorld('userStorePromise', userStorePromise)
@@ -77,8 +77,8 @@ contextBridge.exposeInMainWorld('userStorePromise', userStorePromise)
 
 ```ts
 // In Renderer
-import type {UserStore} from 'contracts.ts'
-import type {defineStore} from 'electron-nano-store'
+import type { UserStore } from 'contracts.ts'
+import type { defineStore } from 'electron-nano-store'
 
 declare global {
 	interface Window {
@@ -99,7 +99,7 @@ use [unplugin-auto-expose](https://github.com/cawa-93/unplugin-auto-expose) for 
 
 ```ts
 // in Preload Script
-import {defineStore} from "electron-nano-store"
+import { defineStore } from "electron-nano-store"
 
 type UserStore = {
 	role: 'admin' | 'user'
@@ -109,7 +109,7 @@ export const userStorePromise = defineStore<UserStore>('user')
 
 ```ts
 // In Renderer
-import {userStorePromise} from '#preload'
+import { userStorePromise } from '#preload'
 
 const store = await userStorePromise
 ```
@@ -121,9 +121,9 @@ need more control you should use [fs-nano-store] directly
 
 ```ts
 // In Main
-import {defineStore} from 'fs-nano-store'
-import {resolveStoreFilepath} from 'electron-nano-store'
-import {app} from 'electron'
+import { defineStore } from 'fs-nano-store'
+import { resolveStoreFilepath } from 'electron-nano-store'
+import { app } from 'electron'
 
 const store = await defineStore(
 	resolveStoreFilepath(
@@ -142,7 +142,7 @@ However, electron does not allow you to expose `EventEmitter` to the main world.
 and returns `change` property, you can't add listeners directly.
 
 ```ts
-const {changes} = defineStore('store-name')
+const { changes } = defineStore('store-name')
 changes.addListener // undefined
 ```
 
@@ -152,7 +152,7 @@ existing `EventTarget`, such as a `window`
 ```ts
 // in Preload Script
 const storePromise = defineStore<Store>('user')
-storePromise.then(({changes}) => {
+storePromise.then(({ changes }) => {
 	changes.addListener(
 		'changed',
 		() => globalThis.dispatchEvent(new CustomEvent('user:changed')),
