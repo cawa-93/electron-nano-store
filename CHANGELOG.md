@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/cawa-93/electron-nano-store/compare/v0.3.3...v0.3.4) (2022-12-27)
+
+
+### Features
+
+* update fs-nano-store to v0.2.8 ([a098ca5](https://github.com/cawa-93/electron-nano-store/commit/a098ca57ae71641907322ca1e37588543e5220de))
+
 ### [0.3.3](https://github.com/cawa-93/electron-nano-store/compare/v0.3.2...v0.3.3) (2022-12-27)
 
 ### [0.3.2](https://github.com/cawa-93/electron-nano-store/compare/v0.3.1...v0.3.2) (2022-12-27)
