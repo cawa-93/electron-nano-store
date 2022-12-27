@@ -48,6 +48,6 @@
 		"typescript": "4.9.4"
 	},
 	"dependencies": {
-		"fs-nano-store": "0.2.5"
+		"fs-nano-store": "0.2.7"
 	}
 }
