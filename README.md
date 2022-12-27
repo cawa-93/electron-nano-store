@@ -7,13 +7,34 @@
 <a href="https://www.buymeacoffee.com/kozack" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" height="60" alt="Buy Me A Coffee"></a>
 
 A minimalistic, secure, type-safe data store for Electron. This package is flat wrapper around [fs-nano-store] and
-automatically resolves the path to the user data directory.
+with a few strict checks to allow safely use it in renderer.
+
+> **Note**
+> See the full **[fs-nano-store]** documentation for more information about how store works
+
+## Installation
+
+```
+npm install electron-nano-store
+```
+
+or
+
+```
+pnpm add electron-nano-store
+```
+
+or
+
+```
+yarn add electron-nano-store
+```
 
 ## Usage
 
 ### Simple
 
-Just expose `defineStore` function and use it directly in your renderer anywhere.
+Just expose in main world `defineStore` function and use it directly in your renderer anywhere.
 
 ```ts
 // In Electron Preload Script
