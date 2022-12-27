@@ -11,7 +11,7 @@
 		"dev": "tsup src/index.ts --format cjs,esm --dts --splitting --clean --watch",
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"release": "npx standard-version --sign && npm publish --public"
+		"release": "npx standard-version --sign && git push --follow-tags origin main && npm publish --public"
 	},
 	"keywords": [
 		"electron",
