@@ -28,6 +28,16 @@ function resolveUserAppDataPath() {
  * @return Absolute path to file
  */
 export function resolveStoreFilepath(storeName: string, dir: string = resolveUserAppDataPath()) {
+	if (basename(storeName) !== storeName) {
+		throw new Error(
+			`${JSON.stringify(
+				storeName
+			)} in invalid store name. Store name should not contain any path fragments. Did you mean ${JSON.stringify(
+				basename(storeName)
+			)}`
+		);
+	}
+
 	return resolve(dir, `${storeName}.nano-store.json`);
 }
 
@@ -39,11 +49,5 @@ export function resolveStoreFilepath(storeName: string, dir: string = resolveUse
  * For security reasons, it is forbidden to use any path fragments
  */
 export function defineStore<TStore extends TNanoStoreData>(storeName: string) {
-	if (basename(storeName) !== storeName) {
-		throw new Error(
-			`${JSON.stringify(storeName)} in invalid store name. Store name should not contain any path fragments`
-		);
-	}
-
 	return defineNanoStore<TStore>(resolveStoreFilepath(storeName, resolveUserAppDataPath()));
 }
