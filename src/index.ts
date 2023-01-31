@@ -1,7 +1,7 @@
 import { basename, normalize, resolve } from 'node:path';
-import { defineStore as defineNanoStore, type TNanoStore, type TNanoStoreData } from 'fs-nano-store';
+import { defineStore as defineNanoStore, type NanoStore, type NanoStoreData } from 'fs-nano-store';
 
-export type { TNanoStoreData, TNanoStore };
+export type { NanoStoreData, NanoStore };
 
 /**
  * @private
@@ -48,6 +48,6 @@ export function resolveStoreFilepath(storeName: string, dir: string = resolveUse
  * @param storeName It is used to define the file in which the data will be stored.
  * For security reasons, it is forbidden to use any path fragments
  */
-export function defineStore<TStore extends TNanoStoreData>(storeName: string) {
+export function defineStore<TStore extends NanoStoreData>(storeName: string) {
 	return defineNanoStore<TStore>(resolveStoreFilepath(storeName, resolveUserAppDataPath()));
 }
